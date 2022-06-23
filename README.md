@@ -103,7 +103,7 @@ Set the innerHTML of an element, a string of HTML
 
 ### class
 
-The class attribute can be defined using objects, arrays, sets, and strings using [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
+The class attribute can be defined using objects, arrays, sets, and strings. Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
 
 ### ...attrs
 
