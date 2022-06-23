@@ -77,7 +77,16 @@ The class attribute can be defined using objects, arrays, sets, and strings usin
 
 ### ...attrs
 
-Define any attribute you want for your element Ex: id: "my-id".
+Define any attribute you want for your element
+
+```
+my_element: {
+    class: "my-element",
+    id: "my-element",
+    style: "background-color: red;",
+    [attribute]: value
+}
+```
 
 (tag, text, innerHTML, and _child elements will not be added as attributes)
 
