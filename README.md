@@ -1,8 +1,87 @@
 # Astro JSON Element
 
-Define HTML elements using JSON
+Create/define HTML elements using JSON objects
 
 ## Example
+
+```
+---
+import { Element } from 'astro-json-element';
+
+const header = {
+    tag: "header",
+    style: "font-family:Arial;display:flex;justify-content:space-around;margin:1rem;border-radius:5px;background-color:white;border:3px solid purple",
+    _heading: {
+        tag: "h1",
+        text: "Purple",
+        style: "font-weight:bold;font-size:3rem;color:purple;"
+    },
+    _ul: {
+        tag: "ul",
+        style: "display:flex;align-items:center;gap:1rem;font-weight:bold;font-size:1.25rem;color:purple;",
+        _item1: {
+            tag: "li",
+            _link: {
+                tag: "a",
+                text: "Home"
+            }
+        },
+        _item2: {
+            tag: "li",
+            _link: {
+                tag: "a",
+                text: "Products"
+            }
+        },
+        _item3: {
+            tag: "li",
+            _link: {
+                tag: "a",
+                text: "About"
+            }
+        },
+        _item4: {
+            tag: "li",
+            style: "padding:.75rem 1rem;border-radius:5px;background-color:purple;color:white;",
+            _link: {
+                tag: "a",
+                text: "Contact"
+            }
+        },
+    }
+}
+---
+
+<Element {...header}/>
+```
+
+## API
+
+#### tag
+
+Defines what HTML tag the element will be
+
+#### text
+
+Set the text of an element, automatically escaped
+
+#### innerHTML
+
+Set the innerHTML of an element, a string of HTML
+
+#### class
+
+The class attribute can be defined using objects, arrays, sets, and strings using class:list directive
+
+#### ...attrs
+
+Define any attribute you want for your element Ex: id: "my-id".
+
+(tag, text, innerHTML, and _child elements will not be added as attributes)
+
+#### _[child]
+
+Defined another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
 
 ```
 header: {
@@ -14,16 +93,42 @@ header: {
         style: "font-weight:bold;font-size:3rem;color:purple;"
     }
 }
-
-<Element {...my_header}/>
 ```
 
-## API
+Children can also be nested inside of other children to make deeply nested elements
 
-### tag
-
-### text
-
-### innerHTML
-
-### ...attrs
+```
+_ul: {
+    tag: "ul",
+    style: "display:flex;align-items:center;gap:1rem;font-weight:bold;font-size:1.25rem;color:purple;",
+    _item1: {
+        tag: "li",
+        _link: {
+            tag: "a",
+            text: "Home"
+        }
+    },
+    _item2: {
+        tag: "li",
+        _link: {
+            tag: "a",
+            text: "Products"
+        }
+    },
+    _item3: {
+        tag: "li",
+        _link: {
+            tag: "a",
+            text: "About"
+        }
+    },
+    _item4: {
+        tag: "li",
+        style: "padding:.75rem 1rem;border-radius:5px;background-color:purple;color:white;",
+        _link: {
+            tag: "a",
+            text: "Contact"
+        }
+    },
+}
+```
