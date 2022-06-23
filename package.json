@@ -4,27 +4,24 @@
   "name": "astro-json-element",
   "version": "0.0.5",
   "description": "Define HTML elements using JSON",
-  "homepage": "https://github.com/BryceRussell/astro-rating#readme",
+  "homepage": "https://github.com/BryceRussell/astro-json-element#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BryceRussell/astro-rating"
+    "url": "https://github.com/BryceRussell/astro-json-element"
   },
   "bugs": {
-    "url": "https://github.com/BryceRussell/astro-rating/issues"
+    "url": "https://github.com/BryceRussell/astro-json-element/issues"
   },
   "keywords": [
     "astro",
     "astro-component",
-    "astro-rating",
-    "star",
-    "rating"
+    "astro-json-element",
+    "json"
   ],
   "exports": "./src/index.mjs",
   "files": [
-    "src/icons",
     "src/index.mjs",
-    "src/Rating.astro",
-    "src/ARating.astro"
+    "src/Element.astro"
   ],
   "scripts": {
     "dev": "astro dev",
@@ -33,13 +30,11 @@
   },
   "devDependencies": {
     "@astrojs/tailwind": "^0.2.1",
-    "astro": "^1.0.0-beta.44",
-    "astro-icon": "^0.7.1"
+    "astro": "^1.0.0-beta.44"
   },
   "dependencies": {
     "@astrojs/tailwind": "^0.2.1",
     "astro": "^1.0.0-beta.44",
-    "astro-icon": "^0.7.1",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14"
   }
