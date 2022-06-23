@@ -18,21 +18,17 @@ const {
 var children = [];
 
 function omit(obj) {
-    const _obj = obj;
-    Object.keys(_obj).forEach((key) => {
-        if (key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete _obj[key]
-        if (key.startsWith('_')) {
-            children.push(_obj[key])
-            delete _obj[key]
-        }
+    Object.keys(obj).forEach((key) => {
+        if (key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete obj[key]
+        if (key.startsWith('_')) {children.push(obj[key]); delete obj[key];}
     })
-  return _obj;
+  return obj;
 }
 ---
 
 <Tag class:list={attrs.class} {...omit(attrs)} set:html={innerHTML}>
     {text && text}
-    { children != [] && children.map((e) => {
+    { children && children.map((e) => {
         return <Child {...e} />
     })}
 </Tag>
