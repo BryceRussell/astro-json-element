@@ -1,0 +1,25 @@
+---
+export interface Props {
+    tag: string;
+    text?: string;
+    innerHTML?: string;
+    [attrs: string]: any;
+}
+
+const {
+    tag: Tag,
+    text,
+    innerHTML,
+    ...attrs
+} = Astro.props as Props
+
+function omit(key, obj) {
+  const { [key]: omit, ...rest } = obj;
+  return rest;
+}
+---
+
+<Tag class:list={attrs.class} {...omit('class', attrs)} set:html={innerHTML}>
+    {text && text}
+    <slot />
+</Tag>

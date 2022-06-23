@@ -1,0 +1,27 @@
+---
+import { Element } from "../index.mjs";
+
+const page = {
+	header: {
+		tag: "header",
+		// class: ["flex", "justify-center", "bg-purple-100", "border-2", "border-purple-500"],
+		// heading: {
+		// 	tag: "h1",
+		// 	text: "Purple Heading",
+		// 	class: ["text-xl", "font-bold", "text-purple-500"]
+		// }
+	}
+}
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<Element {...page.header}>
+			<!-- <Element {...page.header.heading}/> -->
+		</Element>
+	</body>
+</html>
