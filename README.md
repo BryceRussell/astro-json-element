@@ -4,6 +4,8 @@ Create/define HTML elements using JSON objects
 
 ## Example
 
+![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
+
 ```
 ---
 import { Element } from 'astro-json-element';
@@ -57,31 +59,33 @@ const header = {
 
 ## API
 
-#### tag
+### tag
 
 Defines what HTML tag the element will be
 
-#### text
+### text
 
 Set the text of an element, automatically escaped
 
-#### innerHTML
+### innerHTML
 
 Set the innerHTML of an element, a string of HTML
 
-#### class
+### class
 
 The class attribute can be defined using objects, arrays, sets, and strings using class:list directive
 
-#### ...attrs
+### ...attrs
 
 Define any attribute you want for your element Ex: id: "my-id".
 
 (tag, text, innerHTML, and _child elements will not be added as attributes)
 
-#### _[child]
+### _[child]
 
 Defined another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
+
+![Header](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/header.PNG)
 
 ```
 header: {
@@ -96,6 +100,8 @@ header: {
 ```
 
 Children can also be nested inside of other children to make deeply nested elements
+
+![List](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/list.PNG)
 
 ```
 _ul: {
