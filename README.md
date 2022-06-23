@@ -2,6 +2,36 @@
 
 Create/define HTML elements using JSON objects
 
+## How to use
+
+#### Install package
+```
+npm i  astro-json-element
+```
+
+#### Define object and import
+
+```
+---
+import { Element } from 'astro-json-element';
+
+const my_element = {
+    tag: "h1",
+    text: "Heading",
+    class: "heading",
+    id: "my-heading";
+}
+---
+
+<Element {...my_element}/>
+```
+
+__Output:__
+
+```
+<h1 id="my-heading" class="heading">Heading</h1>
+```
+
 ## Example
 
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
