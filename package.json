@@ -3,7 +3,7 @@
   "license": "MIT",
   "name": "astro-json-element",
   "version": "0.0.5",
-  "description": "Define HTML elements using JSON",
+  "description": "Create/define HTML elements using JSON objects",
   "homepage": "https://github.com/BryceRussell/astro-json-element#readme",
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "exports": "./src/index.mjs",
   "files": [
     "src/index.mjs",
-    "src/Element.astro"
+    "src/Element.astro",
+    "src/Child.astro"
   ],
   "scripts": {
     "dev": "astro dev",
