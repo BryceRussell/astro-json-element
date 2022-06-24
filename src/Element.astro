@@ -1,5 +1,5 @@
 ---
-import Child from "./Child.astro";
+import { Element } from "./index.mjs";
 
 export interface Props {
     tag?: string;
@@ -29,6 +29,6 @@ function omit(obj) {
 <Tag class:list={attrs.class} {...omit(attrs)} set:html={innerHTML}>
     {text && text}
     { children && children.map((e) => {
-        return <Child {...e} />
+        return <Element {...e} />
     })}
 </Tag>
