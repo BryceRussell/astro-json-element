@@ -6,7 +6,7 @@ Create/define HTML elements using JSON objects
 
 #### Install package
 ```
-npm i  astro-json-element
+npm i astro-json-element
 ```
 
 #### Define object and import
