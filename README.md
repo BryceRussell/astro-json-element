@@ -2,6 +2,36 @@
 
 Create/define HTML elements using JSON objects
 
+## How to use
+
+#### Install package
+```
+npm i astro-json-element
+```
+
+#### Define object and import
+
+```
+---
+import { Element } from 'astro-json-element';
+
+const my_element = {
+    tag: "h1",
+    text: "Heading",
+    class: "heading",
+    id: "my-heading";
+}
+---
+
+<Element {...my_element}/>
+```
+
+__Output:__
+
+```
+<h1 id="my-heading" class="heading">Heading</h1>
+```
+
 ## Example
 
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
@@ -73,31 +103,40 @@ Set the innerHTML of an element, a string of HTML
 
 ### class
 
-The class attribute can be defined using objects, arrays, sets, and strings using [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
+The class attribute can be defined using objects, arrays, sets, and strings. Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
 
 ### ...attrs
 
-Define any attribute you want for your element
+Define any attribute inside your element
 
 ```
 my_element: {
-    class: "my-element",
+    tag: "span",
     id: "my-element",
-    style: "background-color: red;",
-    [attribute]: value
+    key: value,
 }
+
+<Element {...my_element}/>
+```
+
+__Output:__
+
+```
+<span id="my-element" key="value"></span>
 ```
 
 (tag, text, innerHTML, and _child elements will not be added as attributes)
 
 ### _[child]
 
-Defined another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
+Define another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
+
+__NOTE:__ Some tags like h1-6 and p tags do not allow children and will slot the child element after the defined element inside the parent element
 
 ![Header](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/header.PNG)
 
 ```
-header: {
+const header = {
     tag: "header",
     style: "display:flex;justify-content:center;background-color:white;border:3px solid purple",
     _heading: {
@@ -106,14 +145,16 @@ header: {
         style: "font-weight:bold;font-size:3rem;color:purple;"
     }
 }
+
+<Element {...header}/>
 ```
 
-Children can also be nested inside of other children to make deeply nested elements
+Elements can be nested inside of each other
 
 ![List](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/list.PNG)
 
 ```
-_ul: {
+const list = {
     tag: "ul",
     style: "display:flex;align-items:center;gap:1rem;font-weight:bold;font-size:1.25rem;color:purple;",
     _item1: {
@@ -146,4 +187,6 @@ _ul: {
         }
     },
 }
+
+<Element {...list}/>
 ```
