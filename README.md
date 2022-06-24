@@ -131,6 +131,8 @@ __Output:__
 
 Define another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
 
+__NOTE:__ Some tags like h1-6 and p tags do not allow children and will slot the child element after the defined element inside the parent element
+
 ![Header](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/header.PNG)
 
 ```
