@@ -24,6 +24,8 @@ const my_element = {
 ---
 
 <Element {...my_element}/>
+//if your object is a JSON string
+<Element {...JSON.parse(my_element)}/>
 ```
 
 __Output:__
@@ -31,6 +33,7 @@ __Output:__
 ```
 <h1 id="my-heading" class="heading">Heading</h1>
 ```
+
 
 ## Example
 
