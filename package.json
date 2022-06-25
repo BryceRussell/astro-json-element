@@ -19,7 +19,6 @@
     "json"
   ],
   "main": "./src/index.mjs",
-  "exports": "./src/index.mjs",
   "files": [
     "./src/index.mjs",
     "./src/Element.astro"
