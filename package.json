@@ -18,11 +18,11 @@
     "astro-json-element",
     "json"
   ],
+  "main": "./src/index.mjs",
   "exports": "./src/index.mjs",
   "files": [
-    "src/index.mjs",
-    "src/Element.astro",
-    "src/Child.astro"
+    "./src/index.mjs",
+    "./src/Element.astro"
   ],
   "scripts": {
     "dev": "astro dev",

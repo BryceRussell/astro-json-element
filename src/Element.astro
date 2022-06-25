@@ -19,8 +19,11 @@ var children = [];
 
 function omit(obj) {
     Object.keys(obj).forEach((key) => {
-        if (key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete obj[key]
-        if (key.startsWith('_')) {children.push(obj[key]); delete obj[key];}
+        if (key == "import" || key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete obj[key]
+        if (key.startsWith('_')) {
+            children.push(obj[key]);
+            delete obj[key];
+        }
     })
   return obj;
 }
