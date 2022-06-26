@@ -2,6 +2,8 @@
 
 Create/define HTML elements using JSON objects
 
+[Tailwindcss](https://tailwindcss.com) is an easy way to style astro-json-elements without having to create global stylesheets or use inline styles
+
 ## How to use
 
 #### Install package
