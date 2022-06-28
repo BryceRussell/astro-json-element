@@ -5,6 +5,7 @@ export interface Props {
     tag?: string;
     text?: string;
     innerHTML?: string;
+    debug?: boolean;
     [attrs: string]: any;
 }
 
@@ -12,6 +13,7 @@ const {
     tag:Tag="div",
     text,
     innerHTML,
+    debug,
     ...attrs
 } = Astro.props as Props
 
@@ -20,13 +22,15 @@ var children = [];
 function omit(obj) {
     Object.keys(obj).forEach((key) => {
         if (key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete obj[key]
-        if (key.startsWith('_')) {
+        if (key.startsWith('_') && obj[key] != false && typeof obj[key] != 'undefined') {
             children.push(obj[key]);
             delete obj[key];
         }
     })
   return obj;
 }
+
+if (debug) console.log(Astro.props);
 ---
 
 <Tag class:list={attrs.class} {...omit(attrs)} set:html={innerHTML}>

@@ -88,7 +88,13 @@ const page = {
 		<title>Astro</title>
 	</head>
 	<body>
-		<Element {...page.header}/>
-		<Element {...page.list}/>
+		<Element {...{
+			tag: "section"
+		}}></Element>
+		<Element {...{
+			tag: "section"
+		}}/>
+		<!-- <Element {...page.header}/>
+		<Element {...page.list}/> -->
 	</body>
 </html>
