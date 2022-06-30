@@ -98,56 +98,74 @@ const header = {
 
 ## API
 
-### tag
+### `tag`
+
+**Type**: `string`
+
+**Default**: `div`
 
 Defines what HTML tag the element will be
 
-### slot
+### `slot`
 
-Only option is `before`, only works on _child objects, renders child before text, innerHTML, component slot, and other _child objects
+**Type**: `string`
 
-### text
+Only option is `before`
+
+Only works on _child objects, renders child before text, innerHTML, component slot, and other _child objects inside of its parent
+
+### `text`
+
+**Type**: `string`
 
 Set the text of an element, automatically escaped
 
-### innerHTML
+### `innerHTML`
+
+**Type**: `string`
 
 Set the innerHTML of an element, a string of HTML
 
-### class
+### `class`
 
-The class attribute can be defined using objects, arrays, sets, and strings. Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
+**Type**: `string | Array | Object | Set`
+
+Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive to set the class of your element
 
 
-### debug
+### `debug`
+
+**Type**: `boolean`
+
+**Default**: `false`
 
 If true the element will print its props to the console
 
-### ...attrs
+### `...attrs`
 
-Define any attribute inside your element
+**Type**: `Object`
+
+Any other key/value pairs will be added as attributes to your element
 
 ```
-my_element: {
+const my_element = {
     tag: "span",
+    text: "Text",
     id: "my-element",
     key: value,
 }
 
 <Element {...my_element}/>
+
+//Output
+<span id="my-element" key="value">Text</span>
 ```
 
-__Output:__
+### `_[child]`
 
-```
-<span id="my-element" key="value"></span>
-```
+**Type**: `Object`
 
-(tag, text, innerHTML, and _child elements will not be added as attributes)
-
-### _[child]
-
-Define another JSON Element inside of your JSON object by putting a _ in front of the key of your child element (name does not matter)
+Define a child Element inside of your Element with a `_` in front of the key of your child element (name does not matter)
 
 __NOTE:__ Some tags like h1-6 and p tags do not allow children and will slot the child element after the defined element inside the parent element
 
@@ -167,7 +185,7 @@ const header = {
 <Element {...header}/>
 ```
 
-Elements can be nested inside of each other
+Elements are recursive allowing for unlimited nested child Elements
 
 ![List](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/list.PNG)
 
