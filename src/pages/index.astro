@@ -88,13 +88,26 @@ const page = {
 		<title>Astro</title>
 	</head>
 	<body>
+		<Element {...page.header}/>
+		<Element {...page.list}/>
 		<Element {...{
-			tag: "section"
-		}}></Element>
-		<Element {...{
-			tag: "section"
-		}}/>
-		<!-- <Element {...page.header}/>
-		<Element {...page.list}/> -->
+			text: "Text",
+			innerHTML: "innerHTML",
+			style: "display: flex;gap: 1rem;",
+			_of: {
+				tag: "span",
+				text: "After",
+				debug: true
+			},
+			_page: {
+				tag: "span",
+				text: "Before",
+				slot: "before",
+				debug: true
+			},
+			debug: true
+		}}>
+		<p>Slot</p>
+		</Element>
 	</body>
 </html>

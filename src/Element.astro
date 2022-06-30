@@ -1,8 +1,7 @@
 ---
-import { Element } from "./index.mjs";
-
 export interface Props {
     tag?: string;
+    slot?: "before";
     text?: string;
     innerHTML?: string;
     debug?: boolean;
@@ -11,6 +10,7 @@ export interface Props {
 
 const {
     tag:Tag="div",
+    slot,
     text,
     innerHTML,
     debug,
@@ -20,8 +20,11 @@ const {
 var children = [];
 
 function omit(obj) {
+    //returns a list of attributes that will show up in html Ex: <h1 key1="value1" key2="value2"></h1>
     Object.keys(obj).forEach((key) => {
-        if (key == "tag" || key == "text" || key == "innerHTML" || key == "class") delete obj[key]
+        //Omit keys from being added as attributes
+        if (key == "class") delete obj[key]
+        //If key is _child Element add it to que for rendering and omit it from attributes
         if (key.startsWith('_') && obj[key] != false && typeof obj[key] != 'undefined') {
             children.push(obj[key]);
             delete obj[key];
@@ -34,9 +37,15 @@ if (debug) console.log(Astro.props);
 ---
 
 <Tag class:list={attrs.class} {...omit(attrs)} set:html={innerHTML}>
-    {text && text}
-    { children && children.map((e) => {
-        return <Element {...e} />
+    { children && children.map((e, i) => {
+        if (e.slot == "before") {
+            delete children[i]
+            return <Astro.self {...e} />
+        }
     })}
+    {text && text}
     <slot />
+    { children && children.map((e) => {
+        return <Astro.self {...e} />
+    })}
 </Tag>

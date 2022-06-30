@@ -92,11 +92,19 @@ const header = {
 <Element {...header}/>
 ```
 
+## Render Order
+
+`_child "before" slot` > `text` > `slot` > `_child default slot` > `innerHTML`
+
 ## API
 
 ### tag
 
 Defines what HTML tag the element will be
+
+### slot
+
+Only option is `before`, only works on _child objects, renders child before text, innerHTML, component slot, and other _child objects
 
 ### text
 
@@ -109,6 +117,11 @@ Set the innerHTML of an element, a string of HTML
 ### class
 
 The class attribute can be defined using objects, arrays, sets, and strings. Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive
+
+
+### debug
+
+If true the element will print its props to the console
 
 ### ...attrs
 
