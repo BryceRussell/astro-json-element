@@ -19,12 +19,10 @@
     "json"
   ],
   "type": "module",
-  "types": "./src/index.d.ts",
   "main": "./src/index.js",
   "exports": "./src/index.js",
   "files": [
     "src/index.mjs",
-    "src/index.d.ts",
     "src/Element.astro"
   ],
   "scripts": {
