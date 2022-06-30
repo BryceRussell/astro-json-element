@@ -19,7 +19,9 @@
     "json"
   ],
   "type": "module",
-  "exports": "./src/index.mjs",
+  "types": "./src/index.d.ts",
+  "main": "./src/index.js",
+  "exports": "./src/index.js",
   "files": [
     "src/index.mjs",
     "src/Element.astro"
