@@ -18,6 +18,7 @@
     "astro-json-element",
     "json"
   ],
+  "type": "module",
   "exports": "./src/index.mjs",
   "files": [
     "src/index.mjs",
