@@ -16,13 +16,17 @@
     "astro",
     "astro-component",
     "astro-json-element",
+    "html",
+    "element",
     "json"
   ],
   "type": "module",
+  "types": "/src/index.d.ts",
   "main": "./src/index.mjs",
   "exports": "./src/index.mjs",
   "files": [
     "src/index.mjs",
+    "src/index.d.ts",
     "src/Element.astro"
   ],
   "scripts": {
@@ -32,6 +36,7 @@
   },
   "devDependencies": {
     "@astrojs/tailwind": "^0.2.1",
-    "astro": "^1.0.0-beta.44"
+    "astro": "^1.0.0-beta.44",
+    "typescript": "^4.7.4"
   }
 }
