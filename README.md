@@ -95,14 +95,14 @@ const header = {
 ## Render Order
 
 1. slot `first`
-1. _[child] slot `first`
-1. `text`
-1. _[child] slot `before`
-1. `slot`
-1. _[child] slot `after`
-1. `innerHTML`
-1. _[child] slot `last`
-1. slot `last`
+2. _[child] slot `first`
+3. `text`
+4. _[child] slot `before`
+5. `slot`
+6. _[child] slot `after`
+7. `innerHTML`
+8. _[child] slot `last`
+9. slot `last`
 
 ## Slots
 
