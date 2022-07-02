@@ -1,7 +1,7 @@
 ---
 export interface Props {
     tag?: string;
-    slot?: "before";
+    slot?: "first"|"before"|"after"|"last";
     text?: string;
     innerHTML?: string;
     debug?: boolean;
@@ -10,7 +10,7 @@ export interface Props {
 
 const {
     tag:Tag="div",
-    slot,
+    slot="last",
     text,
     innerHTML,
     debug,
@@ -36,16 +36,31 @@ function omit(obj) {
 if (debug) console.log(Astro.props);
 ---
 
-<Tag class:list={attrs.class} {...omit(attrs)} set:html={innerHTML}>
+<Tag class:list={attrs.class} {...omit(attrs)}>
+    <slot name="first"/>
+    { children && children.map((e, i) => {
+        if (e.slot == "first") {
+            delete children[i]
+            return <Astro.self {...e} />
+        }
+    })}
+    {text && text}
     { children && children.map((e, i) => {
         if (e.slot == "before") {
             delete children[i]
             return <Astro.self {...e} />
         }
     })}
-    {text && text}
     <slot />
+    { children && children.map((e, i) => {
+        if (e.slot == "after") {
+            delete children[i]
+            return <Astro.self {...e} />
+        }
+    })}
+    <Fragment set:html={innerHTML}/>
     { children && children.map((e) => {
         return <Astro.self {...e} />
     })}
+    <slot name="last"/>
 </Tag>

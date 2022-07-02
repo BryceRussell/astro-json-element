@@ -94,20 +94,55 @@ const page = {
 			text: "Text",
 			innerHTML: "innerHTML",
 			style: "display: flex;gap: 1rem;",
-			_of: {
+			_first: {
 				tag: "span",
-				text: "After",
-				debug: true
+				text: "Child slot first"
 			},
-			_page: {
+			_before: {
 				tag: "span",
-				text: "Before",
-				slot: "before",
-				debug: true
+				text: "Child slot before"
 			},
-			debug: true
+			_after: {
+				tag: "span",
+				text: "Child slot after"
+			},
+			_last: {
+				tag: "span",
+				text: "Child slot last"
+			}
 		}}>
+		<p slot="first">Slot First</p>
 		<p>Slot</p>
+		<p slot="last">Slot Last</p>
+		</Element>
+		<Element {...{
+			text: "Text",
+			innerHTML: "innerHTML",
+			style: "display: flex;gap: 1rem;",
+			_first: {
+				tag: "span",
+				text: "Child slot first",
+				slot: "first"
+			},
+			_before: {
+				tag: "span",
+				text: "Child slot before",
+				slot: "before"
+			},
+			_after: {
+				tag: "span",
+				text: "Child slot after",
+				slot: "after"
+			},
+			_last: {
+				tag: "span",
+				text: "Child slot last",
+				slot: "last"
+			}
+		}}>
+		<p slot="first">Slot First</p>
+		<p>Slot</p>
+		<p slot="last">Slot Last</p>
 		</Element>
 	</body>
 </html>

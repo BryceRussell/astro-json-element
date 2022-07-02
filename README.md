@@ -94,9 +94,28 @@ const header = {
 
 ## Render Order
 
-`_child "before" slot` > `text` > `slot` > `_child default slot` > `innerHTML`
+1. slot `first`
+1. _[child] slot `first`
+1. `text`
+1. _[child] slot `before`
+1. `slot`
+1. _[child] slot `after`
+1. `innerHTML`
+1. _[child] slot `last`
+1. slot `last`
 
-## API
+## Slots
+
+### `first`
+
+First element in [Render Order](#render-order)
+
+### `last`
+
+Last elemenet in [Render Order](#render-order)
+
+
+## Props
 
 ### `tag`
 
@@ -110,9 +129,14 @@ Defines what HTML tag the element will be
 
 **Type**: `string`
 
-Only option is `before`
+**Options**: `first`, `before`, `after`, `last`
 
-Only works on _child objects, renders child before text, innerHTML, component slot, and other _child objects inside of its parent
+**Default**: `last`
+
+Controls where a _child element will be rendered inside of a parent json-element
+
+[Render Order](#render-order)
+
 
 ### `text`
 
