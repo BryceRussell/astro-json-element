@@ -4,6 +4,13 @@ Create/define HTML elements using JSON objects
 
 [Tailwindcss](https://tailwindcss.com) is an easy way to style astro-json-elements without having to create global stylesheets or use inline styles
 
+## Whats New?
+
+- Added [`defaults`](#defaults) for defining default props for _child elements
+- Added slots to _child elements for more control over render order
+- Added `first` and `last` slot
+- Added `debug` prop, it prints the props of that element to the console if true
+
 ## How to use
 
 #### Install package
@@ -106,6 +113,8 @@ const header = {
 
 ## Slots
 
+**Default**: Elements are slot in at the center of the render order (5 of 9)
+
 ### `first`
 
 First element in [Render Order](#render-order)
@@ -155,6 +164,12 @@ Set the innerHTML of an element, a string of HTML
 **Type**: `string | Array | Object | Set`
 
 Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive to set the class of your element
+
+### `defaults`
+
+**Type**: `object`
+
+Define default props for _child elements
 
 
 ### `debug`

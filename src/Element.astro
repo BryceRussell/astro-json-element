@@ -4,29 +4,48 @@ export interface Props {
     slot?: "first"|"before"|"after"|"last";
     text?: string;
     innerHTML?: string;
+    defaults?: Props;
     debug?: boolean;
     [attrs: string]: any;
 }
 
+const default_slot = "last";
+
 const {
     tag:Tag="div",
-    slot="last",
+    slot=default_slot,
     text,
     innerHTML,
+    defaults,
     debug,
     ...attrs
 } = Astro.props as Props
 
-var children = [];
+interface Children {
+    [attrs: string]: Array<Props>;
+};
+
+var children: Children = {
+    first: [],
+    before: [],
+    after: [],
+    last: []
+};
 
 function omit(obj) {
-    //returns a list of attributes that will show up in html Ex: <h1 key1="value1" key2="value2"></h1>
+    //returns object of attributes that will show up in html Ex: <h1 key1="value1" key2="value2"></h1>
     Object.keys(obj).forEach((key) => {
-        //Omit keys from being added as attributes
+        //Remove class since it is deinfed using class:list directive
         if (key == "class") delete obj[key]
-        //If key is _child Element add it to que for rendering and omit it from attributes
+
+        //Check if key is a _child element
         if (key.startsWith('_') && obj[key] != false && typeof obj[key] != 'undefined') {
-            children.push(obj[key]);
+            obj[key].slot?
+            //if slot push to slot table
+            children[obj[key].slot].push(obj[key]):
+            //no slot use default
+            children[default_slot].push(obj[key])
+            //Stop element from being displayed as attribute
             delete obj[key];
         }
     })
@@ -38,29 +57,12 @@ if (debug) console.log(Astro.props);
 
 <Tag class:list={attrs.class} {...omit(attrs)}>
     <slot name="first"/>
-    { children && children.map((e, i) => {
-        if (e.slot == "first") {
-            delete children[i]
-            return <Astro.self {...e} />
-        }
-    })}
+    { children.first && children.first.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
     {text && text}
-    { children && children.map((e, i) => {
-        if (e.slot == "before") {
-            delete children[i]
-            return <Astro.self {...e} />
-        }
-    })}
+    { children.before && children.before.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
     <slot />
-    { children && children.map((e, i) => {
-        if (e.slot == "after") {
-            delete children[i]
-            return <Astro.self {...e} />
-        }
-    })}
-    <Fragment set:html={innerHTML}/>
-    { children && children.map((e) => {
-        return <Astro.self {...e} />
-    })}
+    { children.after && children.after.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
+    {innerHTML && <Fragment set:html={innerHTML}/>}
+    { children.last && children.last.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
     <slot name="last"/>
 </Tag>
