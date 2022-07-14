@@ -163,7 +163,7 @@ Set the innerHTML of an element, a string of HTML
 
 **Type**: `string | Array | Object | Set`
 
-Uses the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive to set the class of your element
+Works like the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive for setting the class of your element
 
 ### `defaults`
 

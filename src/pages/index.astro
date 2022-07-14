@@ -4,12 +4,13 @@ import Element from "../Element.astro";
 const page = {
 	header: {
 		tag: "header",
-    style: "font-family:Arial;display:flex;justify-content:space-around;margin:1rem;border-radius:5px;background-color:white;border:3px solid purple",
-    _heading: {
-        tag: "h1",
-        text: "Purple",
-        style: "font-weight:bold;font-size:3rem;color:purple;"
-    },
+    	style: "font-family:Arial;display:flex;justify-content:space-around;margin:1rem;border-radius:5px;background-color:white;border:3px solid purple",
+		class: 'header-purple',
+		_heading: {
+			tag: "h1",
+			text: "Purple",
+			style: "font-weight:bold;font-size:3rem;color:purple;"
+		},
     _ul: {
         tag: "ul",
         style: "display:flex;align-items:center;gap:1rem;font-weight:bold;font-size:1.25rem;color:purple;",
@@ -119,8 +120,10 @@ const page = {
 			text: "Text",
 			innerHTML: "innerHTML",
 			style: "display: flex;gap: 1rem;",
+			class: ['this', 'is', 'a', 'test'],
 			defaults: {
-				style: 'color:blue;'
+				style: 'color:blue;',
+				class: 'child'
 			},
 			_first: {
 				tag: "span",
