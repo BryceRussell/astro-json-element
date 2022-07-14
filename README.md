@@ -6,6 +6,7 @@ Create/define HTML elements using JSON objects
 
 ## Whats New?
 
+- Fixed class attribute showing when undefined
 - Added [`defaults`](#defaults) for defining default props for _child elements
 - Added slots to _child elements for more control over render order
 - Added `first` and `last` slot
