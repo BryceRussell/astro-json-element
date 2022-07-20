@@ -1,5 +1,6 @@
 ---
 import Element from "../Element.astro";
+import { Pagination } from '@astro-bryceguy/pagination';
 
 const page = {
 	header: {
@@ -89,6 +90,9 @@ const page = {
 		<title>Astro</title>
 	</head>
 	<body>
+		<h2>Test</h2>
+		<Element />
+		<Pagination url="" total="64" current="32"/>
 		<Element {...page.header}/>
 		<Element {...page.list}/>
 		<Element {...{
@@ -150,5 +154,7 @@ const page = {
 		<p>Slot</p>
 		<p slot="last">Slot Last</p>
 		</Element>
+
+		
 	</body>
 </html>
