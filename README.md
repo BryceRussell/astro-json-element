@@ -14,6 +14,8 @@ Create/define HTML elements using JSON objects
 
 ## How to use
 
+**If using SSR**: you will have to add `astro-json-element` to the vite.ssr.noExternal option in your astro config. This is due to a workaround for the class:list directive which has a bug detailed here: [#4001](https://github.com/withastro/astro/issues/4001), once this is fixed I can remove the `clsx` dependency and you wont have to configure vite
+
 #### Install package
 ```
 npm i astro-json-element
