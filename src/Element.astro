@@ -1,12 +1,9 @@
 ---
-import { clsx } from 'clsx';
-
 export interface Props {
     tag?: string;
     slot?: "first"|"before"|"after"|"last";
     text?: string;
     innerHTML?: string;
-    class?: {}|[]|string;
     defaults?: Props;
     debug?: boolean;
     [attrs: string]: any;
@@ -19,7 +16,6 @@ const {
     slot=default_slot,
     text,
     innerHTML,
-    class: Class,
     defaults,
     debug,
     ...attrs
@@ -56,7 +52,7 @@ function omit(obj) {
 if (debug) console.log(Astro.props);
 ---
 
-<Tag {...{class: Class?clsx(Class):null, ...omit(attrs)}}>
+<Tag {...omit(attrs)}>
     <slot name="first"/>
     { children.first && children.first.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
     {text && text}

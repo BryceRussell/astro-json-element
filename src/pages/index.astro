@@ -1,6 +1,5 @@
 ---
 import Element from "../Element.astro";
-import { Pagination } from '@astro-bryceguy/pagination';
 
 const page = {
 	header: {
@@ -92,13 +91,12 @@ const page = {
 	<body>
 		<h2>Test</h2>
 		<Element />
-		<Pagination url="" total="64" current="32"/>
 		<Element {...page.header}/>
 		<Element {...page.list}/>
 		<Element {...{
 			text: "Text",
 			innerHTML: "innerHTML",
-			style: "display: flex;gap: 1rem;",
+			style: "display:flex;gap:1rem;",
 			_first: {
 				tag: "span",
 				text: "Child slot first"
@@ -123,8 +121,8 @@ const page = {
 		<Element {...{
 			text: "Text",
 			innerHTML: "innerHTML",
-			style: "display: flex;gap: 1rem;",
-			class: ['this', 'is', 'a', 'test'],
+			style: "display:flex;gap:1rem;",
+			'class:list': ['this', 'is', 'a', 'test'],
 			defaults: {
 				style: 'color:blue;',
 				class: 'child'

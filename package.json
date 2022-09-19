@@ -35,11 +35,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astro-bryceguy/pagination": "^1.1.1",
-    "@astrojs/tailwind": "^0.2.1",
-    "astro": "^0.26.1"
-  },
-  "dependencies": {
-    "clsx": "^1.2.1"
+    "@astrojs/tailwind": "^1.0.0",
+    "astro": "^1.0.4"
   }
 }

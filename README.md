@@ -2,10 +2,11 @@
 
 Create/define HTML elements using JSON objects
 
-[Tailwindcss](https://tailwindcss.com) is an easy way to style astro-json-elements without having to create global stylesheets or use inline styles
+The easiest way to use and style astro-json-elements is using the `style` attribute or using [tailwindcss classes](https://tailwindcss.com), it keeps your html and css together instead of being seperated by stylesheets
 
 ## Whats New?
 
+- `class` does not automatically use `class:list` Use `{'class:list': [...classes]}`  instead
 - Fixed class attribute showing when undefined
 - Added [`defaults`](#defaults) for defining default props for _child elements
 - Added slots to _child elements for more control over render order
@@ -14,8 +15,6 @@ Create/define HTML elements using JSON objects
 
 ## How to use
 
-**If using SSR**: you will have to add `astro-json-element` to the vite.ssr.noExternal option in your astro config. This is due to a workaround for the class:list directive which has a bug detailed here: [#4001](https://github.com/withastro/astro/issues/4001), once this is fixed I can remove the `clsx` dependency and you wont have to configure vite
-
 #### Install package
 ```
 npm i astro-json-element
@@ -23,7 +22,7 @@ npm i astro-json-element
 
 #### Define object and import
 
-```
+```tsx
 ---
 import { Element } from 'astro-json-element';
 
@@ -36,22 +35,14 @@ const my_element = {
 ---
 
 <Element {...my_element}/>
-//if your object is a JSON string
-<Element {...JSON.parse(my_element)}/>
+// <h1 id="my-heading" class="heading">Heading</h1>
 ```
-
-__Output:__
-
-```
-<h1 id="my-heading" class="heading">Heading</h1>
-```
-
 
 ## Example
 
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
 
-```
+```tsx
 ---
 import { Element } from 'astro-json-element';
 
@@ -108,7 +99,7 @@ const header = {
 2. _[child] slot `first`
 3. `text`
 4. _[child] slot `before`
-5. `slot`
+5. `slot` (default)
 6. _[child] slot `after`
 7. `innerHTML`
 8. _[child] slot `last`
@@ -162,12 +153,6 @@ Set the text of an element, automatically escaped
 
 Set the innerHTML of an element, a string of HTML
 
-### `class`
-
-**Type**: `string | Array | Object | Set`
-
-Works like the [class:list](https://docs.astro.build/en/reference/directives-reference/#classlist) directive for setting the class of your element
-
 ### `defaults`
 
 **Type**: `object`
@@ -185,35 +170,56 @@ If true the element will print its props to the console
 
 ### `...attrs`
 
-**Type**: `Object`
+**Type**: `object`
 
 Any other key/value pairs will be added as attributes to your element
 
-```
+```tsx
+---
 const my_element = {
     tag: "span",
     text: "Text",
     id: "my-element",
     key: value,
 }
+---
 
 <Element {...my_element}/>
+// <span id="my-element" key="value">Text</span>
+```
 
-//Output
-<span id="my-element" key="value">Text</span>
+## `class:list`
+
+**Type**: `set | object | array | string`
+
+You can also use the `class:list` directive inside your elements:
+
+```tsx
+---
+const my_element = {
+    tag: "div",
+    'class-list': ['This', 'is', 'a', 'test']
+}
+---
+
+<Element {...my_element}/>
+// <div class="This is a test">Text</div>
 ```
 
 ### `_[child]`
 
-**Type**: `Object`
+**Type**: `astro-json-element`
 
-Define a child Element inside of your Element with a `_` in front of the key of your child element (name does not matter)
+astro-json-elements are recursive, you can create more elements inside of another elements by prefixing a key with `_` This turns the attribute into a new elements
 
 __NOTE:__ Some tags like h1-6 and p tags do not allow children and will slot the child element after the defined element inside the parent element
 
+**Example**:
+
 ![Header](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/header.PNG)
 
-```
+```tsx
+---
 const header = {
     tag: "header",
     style: "display:flex;justify-content:center;background-color:white;border:3px solid purple",
@@ -223,6 +229,7 @@ const header = {
         style: "font-weight:bold;font-size:3rem;color:purple;"
     }
 }
+---
 
 <Element {...header}/>
 ```
@@ -231,7 +238,8 @@ Elements are recursive allowing for unlimited nested child Elements
 
 ![List](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/list.PNG)
 
-```
+```tsx
+---
 const list = {
     tag: "ul",
     style: "display:flex;align-items:center;gap:1rem;font-weight:bold;font-size:1.25rem;color:purple;",
@@ -265,6 +273,7 @@ const list = {
         }
     },
 }
+---
 
 <Element {...list}/>
 ```
