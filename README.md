@@ -2,6 +2,8 @@
 
 Create/define HTML elements using JSON objects
 
+This component was created to make elements cutomizable using a prop you can see how I implemented it here: [pagination component](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/Pagination.astro)
+
 The easiest way to use and style astro-json-elements is using the `style` attribute or using [tailwindcss classes](https://tailwindcss.com), it keeps your html and css together instead of being seperated by stylesheets
 
 ## Whats New?
