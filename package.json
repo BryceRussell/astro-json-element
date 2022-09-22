@@ -2,7 +2,7 @@
   "author": "Bryce Russell",
   "license": "MIT",
   "name": "astro-json-element",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Create/define HTML elements using JSON objects",
   "homepage": "https://github.com/BryceRussell/astro-json-element#readme",
   "repository": {
