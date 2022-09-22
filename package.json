@@ -21,12 +21,10 @@
     "json"
   ],
   "type": "module",
-  "types": "/src/index.d.ts",
   "main": "./src/index.mjs",
   "exports": "./src/index.mjs",
   "files": [
     "src/index.mjs",
-    "src/index.d.ts",
     "src/Element.astro"
   ],
   "scripts": {
