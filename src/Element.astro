@@ -1,5 +1,5 @@
 ---
-export interface Props {
+export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
     tag?: string;
     slot?: "first"|"before"|"after"|"last";
     text?: string;
