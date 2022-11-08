@@ -3,6 +3,7 @@ export interface Props extends astroHTML.JSX.AstroBuiltinAttributes {
     tag?: string;
     slot?: "first"|"before"|"after"|"last";
     text?: string;
+    class?: Record<string, boolean> | Record<any, any> | Iterable<string> | Iterable<any> | string;
     innerHTML?: string;
     defaults?: Props;
     debug?: boolean;
@@ -15,6 +16,7 @@ const {
     tag:Tag="div",
     slot=default_slot,
     text,
+    class: classes,
     innerHTML,
     defaults,
     debug,
@@ -52,7 +54,7 @@ function omit(obj) {
 if (debug) console.log(Astro.props);
 ---
 
-<Tag {...omit(attrs)}>
+<Tag class:list={classes} {...omit(attrs)}>
     <slot name="first"/>
     { children.first && children.first.map((e) => {return <Astro.self {...{...defaults, ...e}} />})}
     {text && text}

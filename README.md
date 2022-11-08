@@ -2,27 +2,19 @@
 
 Create/define HTML elements using JSON objects
 
-This component was created to make elements cutomizable using a prop you can see how I implemented it here: [pagination component](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/Pagination.astro)
+This component was originaly created to customize an element using props for my [pagination component](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/Pagination.astro)
 
-The easiest way to use and style astro-json-elements is using the `style` attribute or using [tailwindcss classes](https://tailwindcss.com), it keeps your html and css together instead of being seperated by stylesheets
-
-## Whats New?
-
-- `class` does not automatically use `class:list` Use `{'class:list': [...classes]}`  instead
-- Fixed class attribute showing when undefined
-- Added [`defaults`](#defaults) for defining default props for _child elements
-- Added slots to _child elements for more control over render order
-- Added `first` and `last` slot
-- Added `debug` prop, it prints the props of that element to the console if true
+**Note**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
 
 ## How to use
 
-#### Install package
+**Install package**:
+
 ```
 npm i astro-json-element
 ```
 
-#### Define object and import
+**Create Element**:
 
 ```tsx
 ---
@@ -190,11 +182,11 @@ const my_element = {
 // <span id="my-element" key="value">Text</span>
 ```
 
-## `class:list`
+## `class`
 
 **Type**: `set | object | array | string`
 
-You can also use the `class:list` directive inside your elements:
+Class uses the `class:list` directive:
 
 ```tsx
 ---
@@ -212,7 +204,7 @@ const my_element = {
 
 **Type**: `astro-json-element`
 
-astro-json-elements are recursive, you can create more elements inside of another elements by prefixing a key with `_` This turns the attribute into a new elements
+astro-json-elements are recursive, you can create elements inside of elements by prefixing a key with `_`
 
 __NOTE:__ Some tags like h1-6 and p tags do not allow children and will slot the child element after the defined element inside the parent element
 
