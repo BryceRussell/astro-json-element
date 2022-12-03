@@ -1,12 +1,14 @@
 # Astro JSON Element
 
-Create/define HTML elements using JSON objects
+Create HTML elements using JS objects
 
-This component was originaly created to customize an element using props for my [pagination component](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/Pagination.astro)
-
-**Note**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
+This component was originaly created to as a way to interface with a component's html elements using props for the purpose of being 'headless', I have since ditched this pattern in favor of using [slots](https://docs.astro.build/en/core-concepts/astro-components/#slots) and slot functions in my headless component library [astro-headless-ui](https://github.com/BryceRussell/astro-headless-ui)
 
 ## How to use
+
+**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro)(outdated)
+
+**Styling**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
 
 **Install package**:
 
