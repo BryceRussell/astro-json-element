@@ -6,7 +6,7 @@ This component was originaly created to as a way to interface with a component's
 
 ## How to use
 
-**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro)(outdated)
+**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro)
 
 **Styling**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
 
