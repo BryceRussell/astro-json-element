@@ -46,7 +46,7 @@ const my_element = {
 
 **Basic Navbar Example**:
 
-> **Note**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
+> **Note**: Styling using the `style` attribute or [tailwindcss classes](https://tailwindcss.com) is easier and keeps your html and css together in the same file/object
 
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
 
