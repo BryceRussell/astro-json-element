@@ -2,7 +2,7 @@
 
 Create HTML elements using JS objects
 
-This component was originaly created for interfacing with html elements inside of a component using props
+This component was originaly created to interface with html elements inside of a component using props
 
 ## Features
 
@@ -42,13 +42,13 @@ const my_element = {
 
 ## Examples
 
-**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro) page link navigation component
+**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro) component
 
 **Basic Navbar Example**:
 
-> **Note**: Styling using the `style` attribute or [tailwindcss classes](https://tailwindcss.com) is easier and keeps your html and css together in the same file/object
-
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
+
+> **Note**: Styling using the `style` attribute or [tailwindcss classes](https://tailwindcss.com) is easier and keeps your html and css together in the same file/object
 
 ```tsx
 ---
