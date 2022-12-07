@@ -2,13 +2,19 @@
 
 Create HTML elements using JS objects
 
-This component was originaly created to as a way to interface with a component's html elements using props for the purpose of being 'headless', I have since ditched this pattern in favor of using [slots](https://docs.astro.build/en/core-concepts/astro-components/#slots) and slot functions in my headless component library [astro-headless-ui](https://github.com/BryceRussell/astro-headless-ui)
+This component was originaly created for interfacing with html elements inside of a component using props
+
+## Features
+
+- Create html element using js object
+- Recursive, create elements inside elements
+- Control over render order using `slot` prop
+- Add automatically escaped text using `text` prop
+- Add a html string using the `innerHTML` prop
+- Apply default attributes to all child elements
+- `class` attribute uses `class:list` directive (clsx)
 
 ## How to use
-
-**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro)
-
-**Styling**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
 
 **Install package**:
 
@@ -34,7 +40,13 @@ const my_element = {
 // <h1 id="my-heading" class="heading">Heading</h1>
 ```
 
-## Example
+## Examples
+
+**Headless Pattern Example**: [`<Pagination>`](https://github.com/BryceRussell/astro-bryceguy/blob/master/packages/pagination/pagination/Pagination.astro) page link navigation component
+
+**Basic Navbar Example**:
+
+> **Note**: Using  the`style` attribute or [tailwindcss classes](https://tailwindcss.com) allows you to style your `astro-json-element` easier and keep the html and css together
 
 ![Navbar](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/navbar.PNG)
 
@@ -134,7 +146,7 @@ Defines what HTML tag the element will be
 
 Controls where a _child element will be rendered inside of a parent json-element
 
-[Render Order](#render-order)
+see [Render Order](#render-order)
 
 
 ### `text`
@@ -154,7 +166,6 @@ Set the innerHTML of an element, a string of HTML
 **Type**: `object`
 
 Define default props for _child elements
-
 
 ### `debug`
 
@@ -188,13 +199,13 @@ const my_element = {
 
 **Type**: `set | object | array | string`
 
-Class uses the `class:list` directive:
+The class attribute uses the `class:list` directive (clsx):
 
 ```tsx
 ---
 const my_element = {
     tag: "div",
-    'class-list': ['This', 'is', 'a', 'test']
+    class: ['This', 'is', 'a', 'test']
 }
 ---
 
@@ -229,8 +240,6 @@ const header = {
 
 <Element {...header}/>
 ```
-
-Elements are recursive allowing for unlimited nested child Elements
 
 ![List](https://raw.githubusercontent.com/BryceRussell/astro-json-element/master/examples/list.PNG)
 
